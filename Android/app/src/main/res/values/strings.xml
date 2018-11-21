@@ -1,0 +1,86 @@
+<resources>
+    <string name="app_name">SpiderByte</string>
+    <string name="notification">Notification</string>
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="announcements">Announcements</string>
+    <string name="calendar">Calendar</string>
+    <string name="settings">Settings</string>
+    <string name="title_activity_announcement_detail">AnnouncementDetailActivity</string>
+    <string name="postKey">postKey</string>
+
+
+    <string name="disconnect_menu_item_text">Disconnect</string>
+    <string name="description_text">\nYou\'re now connected to Office 365. Tap the button below to send a message from your account using the Office 365 SDK.\n</string>
+    <string name="conclusion_text">\nCheck your inbox, you have a new message :)</string>
+    <string name="connecting_text">Connecting</string>
+    <string name="login_text">Login</string>
+
+    <!-- Toast successful messages -->
+    <string name="connect_toast_text">Successfully Connected!</string>
+    <string name="discover_toast_text">Found Office 365 mail service</string>
+    <string name="send_mail_toast_text">Mail sent</string>
+    <string name="disconnect_toast_text">You have been logged out</string>
+
+    <!-- TextView Error messages -->
+    <string name="title_text_error">Oops!</string>
+    <string name="connect_text_error">\nSorry, can\'t connect to Office 365.\nHint: Check logcat for details.</string>
+    <string name="discover_text_error">\nSorry, can\'t find the mail service.\nHint: Check logcat for details.</string>
+    <string name="send_mail_text_error">\nSorry, can\'t send the email.\nHint: Check logcat for details.</string>
+
+    <!-- Toast error messages -->
+    <string name="connect_toast_text_error">Error connecting to Microsoft Servers</string>
+    <string name="discover_toast_text_error">Error finding mail service\nCheck logcat for details</string>
+    <string name="warning_client_id_redirect_uri_incorrect">The client ID or redirect URI is not valid. Enter a valid client ID and redirect URI in the Constants.java file and run again</string>
+    <string name="client_Id">enter your client id</string>
+    <string name="msalPrefix">enter msalPrefix</string>
+
+    <string name="title_activity_welcome">Home Screen</string>
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">Welcome to SpiderByte!</string>
+    <string name="slide_1_desc">Please take a few minutes to learn about the features of the app</string>
+
+    <string name="slide_2_title">Navigating around the application</string>
+    <string name="slide_2_desc">Swipe to switch between Announcements, Events and Personal Information</string>
+
+    <string name="slide_3_title">Login with your K-Number!</string>
+    <string name="slide_3_desc">You can login with your existing university email, using K-Number@kcl.ac.uk</string>
+
+    <string name="slide_4_title">Announcements</string>
+    <string name="slide_4_desc">You can click on each announcement to see more details</string>
+
+    <string name="slide_5_title">Calendar</string>
+    <string name="slide_5_desc">You can click on dates to see more details about events on that day</string>
+
+    <string name="slide_6_title">Settings</string>
+    <string name="slide_6_desc">You can click on settings tab to see personal information and application details</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
+    <string name="unauthorized_toast_text">Please login with a King\'s College London Account.</string>
+    <string name="no_announcements">No announcements available</string>
+    <string name="no_events">No events available</string>
+    <string name="event_time_text">Time:</string>
+
+    <!-- About Settings Text -->
+    <string name="about_title_text">The MIT License (MIT)\n\nCopyright &#169; 2018 SpiderByte\n\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.\n</string>
+
+    <string name="feedback_title_text">Contact the Department of Informatics \n</string>
+    <string name="about_title_desc_text">Contact the Department of Informatics \n \nContacting academic members of staff \nPlease use our People section to find contact details for a specific person. \n</string>
+        <string name="about_address_title_text">Postal address \n</string>
+        <string name="about_address_desc_text">Department of Informatics \nKing\’s College London \nStrand Campus \nBush House \n30 Aldwych London \nWC2B 4BG \n</string>
+        <string name="about_enquiries_title_text">Admissions enquiries \n</string>
+        <string name="about_enquiries_desc_text">For detailed information about the application procedure, how to apply, academic / language requirements and documentation to be included, please refer to the Admissions Office. \nIf you have an enquiry about our programmes and have not submitted an application, you can contact the relevant admissions team directly: \nProspective undergraduate (BSc) students: \nWrite: Complete our Enquiry form \nTel: 020 7848 7517 \n \nIf you have already submitted an application, please direct any queries about your application to the team via King’s Apply, the online portal, directly so that we can keep an accurate record of your correspondence. \n \n- Log into your portal account at https://apply.kcl.ac.uk \n \n- Click through to the programme that you are trying to access (the links will be under the section called ‘Current applications’). If you’ve applied to more than one programme, click through to the relevant one. \n
+\n Choose  ‘Send King’s a Message’ from the left hand menu  and you will be able to type a message to the admissions team to ask for assistance. You can also attach files of any relevant documents, results etc. \n</string>
+        <string name="about_carrers_title_text">Careers \n</string>
+        <string name="about_careers_desc_text">King\’s students should log onto King\’s CareerConnect to book appointments with the Careers team, reserve a place at Careers events, find an internship, and browse job opportunities. \n \nIf you are interested in advertising an opportunity to our students on King’s CareerConnect, please see here. \nDegree certificate requests \nThese are dealt with by Boards and Awards. \n</string>
+        <string name="about_reference_title_text">Reference requests \n</string>
+        <string name="about_reference_desc_text">If an employer requires a factual reference from King’s College London stating your dates of attendance and qualifications obtained, the transcripts office can produce this: transcripts@kcl.ac.uk. \nIf the employer requests a character reference, you should request this from your personal tutor. \n</string>
+        <string name="about_transcript_title_text">Transcript requests \n</string>
+        <string name="about_transcript_desc_text">Requests for academic transcripts should go to the Transcripts webpage. \nWebsite enquiries \nFor all website enquiries, contact Lily Brinn.</string>
+
+
+
+</resources>

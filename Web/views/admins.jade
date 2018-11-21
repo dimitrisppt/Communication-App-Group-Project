@@ -1,0 +1,160 @@
+extends layout 
+
+block content 
+  style.
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #009688;
+    color: white;
+    }
+
+    .fa-trash {
+      color: red;
+    }
+
+    .btn-green:hover{
+      background-color: #00665c;
+      border-color: #00665c;
+      color: white;
+    }
+    .no-drop {cursor: no-drop;}
+
+    .table-hover th:hover{
+    background-color: #D32F2F;
+    color:white;}
+
+    .fa.disabled {
+    cursor: no-drop;
+    pointer-events: all !important;
+    color: grey;
+    }
+    tr:hover i.fa.disabled{
+      cursor: no-drop;
+      pointer-events: all !important;
+      color: grey;
+    }
+    tr:hover i.fa {
+      color: white;
+    }
+    th {
+    text-align: center;
+    }
+
+    .btn-green{
+    color: white;
+    background-color: #009688;
+    border-color: #009688;
+
+    }
+
+    .pointer {cursor: pointer;}
+
+  .content.mt-3
+    .animated.fadeIn
+      .row
+        .col-md-12
+          .card
+            .card-header
+              strong.card-title List of Staff
+            | 
+
+            if (superAdminLogged)          
+              a#new-admin.btn.btn-green(href='/admins/new') Add a new Administrator
+                              
+            .card-body
+               div.text-danger=error
+
+               table#adminsList.table.table-striped.table-bordered(cellspacing='0', width='100%')
+                thead
+                  tr                                 
+                    th Name
+                    th Email
+                    if (superAdminLogged)
+                      th Delete
+                tbody
+                  
+                  for admin in adminsList
+                    tr
+                      td=admin.name
+                      td=admin.email
+
+                      if (superAdminLogged) 
+                        if (admin.email !== 'munkhtulga.battogtokh@kcl.ac.uk' && admin.email !== 'spider-byte-tester@outlook.com' && admin.email !== 'henry.valeyre@kcl.ac.uk')
+                          td 
+                            div(style='text-align:center')                    
+                              i.pointer.fa.fa-trash.dt-delete(
+                              data-firebase-key=admin.firebaseKey)
+                                span.glyphicon.glyphicon-remove(aria-hidden='true')
+                        else 
+                          td 
+                            div(style='text-align:center')  
+                              i.menu-icon.fa.fa-trash.disabled   
+                     
+              // Modal
+              #myModal.modal.fade(role='dialog')
+                .modal-dialog
+                  // Modal content
+                  .modal-content
+                    .modal-header
+                      button.close(type='button', data-dismiss='modal') &times;
+                      |                                     
+                      h4.modal-title Row information
+                    |                                   
+                    .modal-body
+                    |                                   
+                    .modal-footer
+                      button.btn.btn-default(type='button', data-dismiss='modal') Close
+             
+  // .animated
+  // .content
+  // /#right-panel
+  // Right Panel
+
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')
+
+  script(src='/assets/js/lib/data-table/datatables.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/dataTables.bootstrap.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/dataTables.buttons.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.bootstrap.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/jszip.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/pdfmake.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/vfs_fonts.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.html5.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.print.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.colVis.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/datatables-init.js')
+  |     
+  script(src='/assets/js/deleteButtons.js')
+  script(type='text/javascript').
+    $(document).ready(function() {
+    $('#bootstrap-data-table-export').DataTable();
+    } );
+  |    
+  script(type='text/javascript').
+    $(document).ready(function() {
+      $('#adminsList').DataTable(
+      {
+      "dom": '<"dt-buttons"Bf><"clear">lirtp',
+      "paging": false,
+      "autoWidth": true,
+      "buttons": [
+      'colvis',
+      'csvHtml5',
+      'pdfHtml5',
+      'print'
+      ]
+      }
+      );
+    });

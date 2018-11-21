@@ -1,0 +1,38 @@
+
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+# install! 'cocoapods', :integrate_targets => true
+use_frameworks!
+inhibit_all_warnings!
+
+
+target 'SpiderByte' do
+
+  pod 'JTAppleCalendar', '~> 7.0'
+  pod 'FontAwesomeIconFactory'
+  pod 'Down'
+  pod 'FirebaseCore'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseUI/Database', '~> 4.0'
+  pod 'leveldb-library'
+  pod 'HTagView'
+  pod 'Floaty', '~> 4.0.0'
+  pod 'paper-onboarding'
+
+
+  target 'SpiderByteTests' do
+      inherit! :search_paths
+      pod 'OCMock'
+  end
+
+  target 'SpiderByteUITests' do
+      inherit! :search_paths
+      pod 'OCMock'
+  end
+end
+
+post_install do |installer|
+  installer.pods_project.targets.each do |target|
+    puts "#{target.name}"
+  end
+end

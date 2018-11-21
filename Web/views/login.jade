@@ -1,0 +1,63 @@
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='')  
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='')  
+//if IE 8
+  html.no-js.lt-ie9(lang='')  
+// [if gt IE 8] <!
+html.no-js(lang='')
+  // <![endif]
+  head
+    style
+     | h1 {
+     | -webkit-text-stroke-width: 1.3px;
+     | -webkit-text-stroke-color: black;
+     | }
+
+     | h5 {
+     | -webkit-text-stroke-width: 0.8px;
+     | -webkit-text-stroke-color: black;
+     | }
+
+     | u {
+     | text-decoration-color: white;
+     | }
+
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title=title
+    meta(name='description', content='SpiderByte')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', href='apple-icon.png')
+    link(rel='shortcut icon', href='favicon.ico')
+    link(rel='stylesheet', href='assets/css/normalize.css')
+    link(rel='stylesheet', href='assets/css/bootstrap.min.css')
+    link(rel='stylesheet', href='assets/css/font-awesome.min.css')
+    link(rel='stylesheet', href='assets/css/themify-icons.css')
+    link(rel='stylesheet', href='assets/css/flag-icon.min.css')
+    link(rel='stylesheet', href='assets/css/cs-skin-elastic.css')
+    // <link rel="stylesheet" href="assets/css/bootstrap-select.less">
+    link(rel='stylesheet', href='/assets/scss/style.css')
+    link(rel='stylesheet', href='/assets/css/style.css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800', rel='stylesheet', type='text/css')
+    // <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+  body.bg
+    .container-fluid
+      .row
+        .col-md-4.col-sm-4.col-xs-12
+        .col-md-4.col-sm-4.col-xs-12
+          form.form-container
+            .login-logo
+              img.align-content(src='images/logo.png', alt='logo text', style='max-width:300px; width:100%;display:block;margin:auto')
+              img.align-content(src='/spider-byte-nobg.png', alt='logo image', style='max-width:100px')
+            br
+            button.btn.btn-primary.btn-block.ld-ext-right.running.ng-click(id='connect_button', class='ms-Button colorRed',type="button" onclick="window.location.href='/login'")
+              span.ms-Button-label Login
+            if(message) 
+              div(style='margin:10px;color:white;')=message
+  
+    script(src='assets/js/vendor/jquery-2.1.4.min.js')
+    script(src='assets/js/popper.min.js')
+    script(src='assets/js/plugins.js')
+    script(src='assets/js/main.js')

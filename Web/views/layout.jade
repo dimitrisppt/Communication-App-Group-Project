@@ -1,0 +1,143 @@
+doctype html
+//if lt IE 7
+  html.no-js.lt-ie9.lt-ie8.lt-ie7(lang='')  
+//if IE 7
+  html.no-js.lt-ie9.lt-ie8(lang='')  
+//if IE 8
+  html.no-js.lt-ie9(lang='')  
+// [if gt IE 8] <!
+// <![endif]
+html.no-js(lang='')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    title=title
+    meta(name='description', content='SpiderByte')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='apple-touch-icon', href='apple-icon.png')
+    link(rel='shortcut icon', href='/spider.png')
+    link(rel='stylesheet', href='/assets/css/normalize.css')
+    link(rel='stylesheet', href='/assets/css/bootstrap.min.css')
+    link(rel='stylesheet', href='/assets/css/font-awesome.min.css')
+    link(rel='stylesheet', href='/assets/css/themify-icons.css')
+    link(rel='stylesheet', href='/assets/css/flag-icon.min.css')
+    link(rel='stylesheet', href='/assets/css/cs-skin-elastic.css')
+    link(rel='stylesheet', href='/assets/css/preloader.css')
+    // <link rel="stylesheet" href="/assets/css/bootstrap-select.less">
+    link(rel='stylesheet', href='/assets/scss/style.css')
+    link(href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800', rel='stylesheet', type='text/css')
+    // <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script>
+    script. 
+      window.onresize = function(e) {
+        console.log("hello"); 
+        var body = document.querySelector('body'); 
+        (window.innerWidth <= 577) ? body.className = '': 
+          body.className = 'open'; 
+      }
+
+  body.open
+
+    if(preload)
+      div.loader-wrapper
+        img#spider(src='/assets/spider-byte-32.gif')
+
+    // Left Panel
+    aside#left-panel.left-panel
+      nav.navbar.navbar-expand-sm
+        .navbar-header
+          button.navbar-toggler(type='button', data-toggle='collapse', data-target='#main-menu', aria-controls='main-menu', aria-expanded='false', aria-label='Toggle navigation')
+            i.fa.fa-bars
+          a.navbar-brand(href='/')
+            img(src='/images/logo.png', alt='Logo')
+          a.navbar-brand.hidden(href='/')
+            img(src='/images/logo2.png', alt='Logo')
+        #main-menu.main-menu.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/')
+                i.menu-icon.fa.fa-dashboard
+                | Dashboard
+            h3.menu-title Announcements
+            // /.menu-title
+            li
+              a(href='/announcements/create')
+                i.menu-icon.fa.fa-edit
+                | New Announcement
+            li
+              a(href='/listAnnouncements/')
+                i.menu-icon.fa.fa-archive
+                | List of Announcements
+            h3.menu-title Templates
+            li
+              a(href='/templates/')
+                i.menu-icon.fa.fa-pencil
+                | Create a Template
+            li
+              a(href='/templateList/')
+                i.menu-icon.fa.fa-list
+                | List of Templates
+            h3.menu-title Admins
+            li
+              a(href='/admins/')
+                i.menu-icon.fa.fa-user
+                | List of administrators
+            h3.menu-title Events 
+            li   
+              a(href='/event/')
+                i.menu-icon.fa.fa-calendar
+                | Events
+        // /.navbar-collapse
+    // /#left-panel
+    // Left Panel
+
+  #right-panel.right-panel
+    // Header
+    header#header.header
+      .header-menuz
+        .col-sm-7
+          a#menuToggle.menutoggle.pull-left
+            i.fa.fa-chevron-left
+        .col-sm-5
+          .user-area.dropdown.float-right
+
+            #logout(style='display:inline;margin-right:10px;line-height:2em')
+                a(href='/logout') Logout
+            #license(style='display:inline;margin-right:10px;line-height:2em')
+                a(href='/copyright') License
+
+            #avatar(style='display:inline;' onclick='toggleLogout() , toggleLicense()')
+              a.dropdown-toggle(href='#')
+                if (session.photoB64)
+                  img.user-avatar.rounded-circle(src=('/' + session.adminEmail + '.jpg'), alt='User Avatar')
+                else 
+                  img.user-avatar.rounded-circle(src='/images/manager.png', alt='User Avatar')
+                
+
+            .user-menu.dropdown-menu
+              a.nav-link(href='#')
+                i.fa.fa.-cog
+                | Licenses
+              a.nav-link(href='/logout')
+                i.fa.fa-power.-off
+                | Logout
+
+    // /header
+    // Header
+
+    block content
+
+  if(preload)
+    script(src='/assets/js/preloader.js')
+  script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+  script.
+    var logoutBtn = $('#logout'); 
+    logoutBtn.hide(); 
+    function toggleLogout() {
+      logoutBtn.slideToggle(); 
+    }
+  script.
+    var licenseBtn = $('#license'); 
+    licenseBtn.hide(); 
+    function toggleLicense() {
+      licenseBtn.slideToggle(); 
+    }

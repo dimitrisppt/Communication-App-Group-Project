@@ -1,0 +1,45 @@
+doctype html
+html 
+  head
+    link(rel='stylesheet', type='text/css', media='screen', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css')
+    link(rel='stylesheet', type='text/css', media='screen', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', href='/assets/css/filterForm.css')
+    link(rel='stylesheet', type='text/css', href='/assets/css/bootstrap-tagsinput.css')
+    script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(src='/assets/js/bootstrap-tagsinput.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/js/bootstrap-markdown.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js')
+  body 
+
+    form.form-horizontal(action='/templates/', method='post', enctype='application/x-www-form-urlencoded')
+      if (key) 
+        input#key(name='key', value=key, type='visible') 
+      .row.form-group
+        .col.col-md-2
+          label.form-control-label(for='name') Name
+        |                                 
+        .col.col-md-4
+          input#name.form-control(type='text', name='name', placeholder='Enter name' , value=requestName)
+        |   
+
+      .row.form-group
+        .col.col-md-2
+          label.form-control-label(for='content') Content
+        .col-12.col-md-4
+          textarea#content.form-control(data-provide='markdown', name='content', rows='7', placeholder='Write some Text', required)=requestContent
+   
+      
+      ul(style='padding:20px')
+        for error in feedbacks.errors 
+          li.text-danger=error
+        for message in feedbacks.messages
+          li.text-success=message
+
+      .card-footer
+        button#submit.btn.btn-success.btn-sm(type='submit')
+          i.fa.fa-check
+          |  Submit
+        button#cancel.btn.btn-danger.btn-sm(type='reset')
+          i.fa.fa-times
+          |  Cancel

@@ -1,0 +1,212 @@
+doctype html
+html 
+  head
+      link(rel='stylesheet', type='text/css', media='screen', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css')
+      link(rel='stylesheet', type='text/css', media='screen', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css')
+      link(rel='stylesheet', type='text/css', href='/assets/css/filterForm.css')
+      link(rel='stylesheet', type='text/css', href='/assets/css/bootstrap-tagsinput.css')
+      script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+      script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+      script(src='/assets/js/bootstrap-tagsinput.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/js/bootstrap-markdown.min.js')
+      script(src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js')
+  body 
+
+    if (!filterFileUrl)
+      #optional-filter-form
+        form#filterForm.form-horizontal.d-none(action='/announcements/groupStudents', method='post', name='filterFile',enctype='multipart/form-data')
+
+          .row.form-group
+            .col.col-md-2
+              label.form-control-label(for='filter-file') 
+                .text-primary Attach '.xlsx' file listing students
+            .col-12.col-md-4
+              input#filterFile.form-control-file(type='file', name='filter-file', multiple='')
+          if (key) 
+            input#key(name='key', value=key, type='hidden') 
+              
+    form#mainForm.form-horizontal(action='/announcements/create', method='post', enctype='multipart/form-data', name='filterForm')
+      row.form-group
+          label(for='event') To add event
+            |   
+            select#eventOrNot.form-control(name='eventOrNot')
+              option No event
+              |     
+              option Add event (Additional fields below)
+              |  
+
+      if (key) 
+        input#key(name='key', value=key, type='hidden')
+
+      if (!filterFileUrl)
+        row.form-group
+          label(for='targetGroup') Target group
+            |   
+            select#targetGroup.form-control(name='targetGroup', style='margin-top:5px;')
+              option All students
+              |     
+              option Filtered group of students
+              | 
+              option By k-number
+
+      else
+        .row.form-group
+        label(for='targetProgramme') Target by programme
+          |   
+          select#targetProgramme.form-control(name='targetProgrammes[]', multiple='multiple', required)
+            if (programmesArray)
+              for programme in programmesArray
+                option=programme
+                | 
+        .row.form-group
+        label(for='targetStatus') Target by student status
+          |   
+          select#targetStatus.form-control(name='targetStatuses[]', multiple='multiple', required)
+            if (statusArray)
+              for status in statusArray
+                option=status
+                | 
+        .row.form-group
+        label(for='targetYear') Target by study year
+          |   
+          select#targetYear.form-control(name='targetYears[]', multiple='multiple', required)
+            if (yearsArray)
+              for year in yearsArray
+                option=year
+                | 
+
+      #kNo.row.form-group
+        .col.col-md-2
+          label.form-control-label(for='mailingList') K-number emails
+        .col.col-md-4
+          input#knumber.form-control(type='email', name='mailingList', placeholder='Input list of k-numbers separated by commas', multiple, title='only @kcl.ac.uk emails', pattern='.+@kcl.ac.uk', data-role='tagsinput')
+      .row.form-group
+        label(for='targetTemplate' style='margin-left:15px;') Add template
+          |   
+          select#targetTemplate.form-control(onchange="displayTemplate()")
+            if (template)
+              option None
+              for templates in template
+                option=templates.name
+                
+      .row.form-group 
+        select#targetTemplate2.form-control(type='hidden', style='display:none;' onchange="displayTemplate()")
+          if (template)
+            option 
+            for templates in template
+              option=templates.content
+              | 
+
+      .row.form-group
+        .col.col-md-2
+          label.form-control-label(for='tag') Topic
+        .col.col-md-4  
+          select.form-control(name='tag')
+            option General 
+            option Important
+            option Careers
+            option Modules
+      .row.form-group
+        .col.col-md-2
+          label.form-control-label(for='title') Title
+        .col.col-md-4
+          input#title.form-control(type='text', name='title', placeholder='Enter Title', value=requestTitle, required)
+      .row.form-group
+        .col.col-md-2
+          label.form-control-label(for='content') Content
+        .col-12.col-md-6
+          textarea#content.form-control(data-provide='markdown', name='content', rows='9', placeholder='Write some Text', required)=requestContent
+        .col-12.col-md-4
+          input#pdfEncoding(type='hidden', name='pdfEncoding', value='')
+
+      #eventDiv.content.panel.panel-default
+
+          .panel-heading Event details
+
+          .panel-body(style='padding:20px;')
+            .form-group
+              .col.col-md-2
+                label.form-control-label(for='eventtitle') Event Title
+              .col.col-md-4
+                input#eventtitle.form-control(type='text', name='eventtitle' , value=requestEventTitle)
+            .form-group
+              .col.col-md-2
+                label.form-control-label(for='desc') Description
+              .col-12.col-md-4.col-lg-7
+                input#desc.form-control(type='text', name='desc' , value=requestDesc)
+            .form-group
+              .col.col-md-2.col-lg.4
+                label.form-control-label(for='date') Date
+              .col-12.col-md-4.col-lg-7
+                input#date.form-control(type='date', name='date' , value=requestDay)
+            .form-group
+              .col.col-md-2.col-lg.4
+                label.form-control-label(for='stime') Start Time
+              .col-12.col-md-4.col-lg-7
+                input#stime.form-control(type='time', name='stime' , value=requestStart)
+            .form-group
+              .col.col-md-2.col-lg.4
+                label.form-control-label(for='etime') End Time
+              .col-12.col-md-4.col-lg-7
+                input#etime.form-control(type='time', name='etime' , value=requestEnd)
+            .form-group
+              .col.col-md-2.col-lg.4
+                label.form-control-label(for='loc') Location
+              .col-12.col-md-4.col-lg-7
+                input#loc.form-control(type='test', name='loc' , value=requestlocation)
+    .row.form-group
+        .col.col-md-2
+          label.form-control-label
+            .text-primary Attach PDF file
+    input#pdf(type='file', name='pdf')  
+    
+    ul(style='padding:20px')
+      li#knumberError.text-danger(style='display:none;') Please provide at least one knumber
+      for error in feedbacks.errors 
+        li.text-danger=error
+      for message in feedbacks.messages
+        li.text-success=message
+
+    .card-footer
+      button#btn-submit.btn.btn-success.btn-sm()
+        i.fa.fa-check
+        |  Submit
+      button#cancel.btn.btn-danger.btn-sm()
+        i.fa.fa-times
+        |  Cancel
+
+    script(async='', type='text/javascript', src='/assets/js/website.js', charset='utf-8')
+    script.
+      document.getElementById("btn-submit").addEventListener("click", function(){
+        var files = document.getElementById('pdf').files;
+            if (files.length > 0) {
+              var file = files[0];
+              var reader = new FileReader();
+              reader.readAsDataURL(file);
+              reader.onload = function () {
+                document.getElementById('pdfEncoding').value = reader.result;
+                document.getElementById("mainForm").submit()
+              };
+              reader.onerror = function (error) {
+              console.log('Error: ', error);
+              };
+
+            }else{
+              document.getElementById("mainForm").submit();
+            }
+        
+
+        });
+      
+      document.getElementById("cancel").addEventListener("click", function(){
+        $("form#mainForm")[0].reset();
+      });
+      
+      function displayTemplate(){
+        var selectBox = document.getElementById("targetTemplate");
+        var selectBox2 = document.getElementById("targetTemplate2");
+        var selectedValue = selectBox2.options[selectBox.selectedIndex].value;
+        $("textarea#content").val($("textarea#content").val() + '\r\n' + selectedValue);
+      }
+    script(src='/assets/js/filterForm.js')
+      

@@ -1,0 +1,26 @@
+extends layout 
+
+block content 
+
+  .col-lg-12
+    .animated.fadeIn
+      .card
+
+        .card-body.card-block
+          iframe#form-frame(src='/templateList/templateListForm/' + template.firebaseKey, width='100%' frameborder='0', scrolling='yes',template, onload='resizeIframe(this)', style='transition-property:height; transition-duration: 0.6s;')
+
+        #test(style='display:none;')
+          div=template.firebaseKey
+
+  script(type='text/javascript').
+    function resizeIframe(obj){
+    console.log("problem");
+    obj.style.height = 0;
+    obj.style.height =  window.innerHeight + 'px';
+    }
+
+  script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')      

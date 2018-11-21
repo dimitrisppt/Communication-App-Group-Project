@@ -1,0 +1,130 @@
+extends layout 
+
+block content 
+  style.
+    .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+    background-color: #009688;
+    color: white;
+    }
+    th {
+    text-align: center;
+    }
+    tr:hover i.fa {
+      color: white;
+    }
+    .fa-trash {
+      color: red;
+    }
+    .pointer {cursor: pointer;}
+
+    .table-hover th:hover{
+    background-color: #D32F2F;
+    color:white;}
+  .content.mt-3
+    .animated.fadeIn
+      .row
+        .col-md-12
+          .card
+            .card-header
+              strong.card-title List of Templates
+            | 
+                              
+            .card-body  
+               table#templateList.table.pointer.table-striped.table-hover.table-bordered(cellspacing='0', width='100%')
+                thead.table-hover
+                  tr                                
+                    th Name                                        
+                    th Delete 
+                    th Edit                  
+                tbody
+                  
+                  for templates in templateList
+                    tr
+                      td.btn-detailT(data-firebase-key=templates.firebaseKey)=templates.name
+                      td    
+                        div(style='text-align:center')                   
+                          i.fa.fa-trash.dt-deleteTem(
+                          data-firebase-key=templates.firebaseKey)
+                            span.glyphicon.glyphicon-remove(aria-hidden='true')
+                      td    
+                        div(style='text-align:center')                   
+                          i.fa.fa-pencil.dt-editTemplate(
+                          data-firebase-key=templates.firebaseKey)
+                            span.glyphicon.glyphicon-remove(aria-hidden='true')
+                     
+              // Modal
+              #myModal.modal.fade(role='dialog')
+                .modal-dialog
+                  // Modal content
+                  .modal-content
+                    .modal-header
+                      button.close(type='button', data-dismiss='modal') &times;
+                      |                                     
+                      h4.modal-title Row information
+                    |                                   
+                    .modal-body
+                    |                                   
+                    .modal-footer
+                      button.btn.btn-default(type='button', data-dismiss='modal') Close
+
+          div.text-danger=error
+             
+  // .animated
+  // .content
+  // /#right-panel
+  // Right Panel
+
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')
+
+  script(src='/assets/js/lib/data-table/datatables.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/dataTables.bootstrap.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/dataTables.buttons.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.bootstrap.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/jszip.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/pdfmake.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/vfs_fonts.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.html5.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.print.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/buttons.colVis.min.js')
+  |     
+  script(src='/assets/js/lib/data-table/datatables-init.js')
+  |     
+  script(src='/assets/js/deleteTem.js')
+  |     
+  script(src='/assets/js/detailT.js')
+  |   
+  script(src='/assets/js/editTemplate.js')
+
+  script(type='text/javascript').
+    $(document).ready(function() {
+    $('#bootstrap-data-table-export').DataTable();
+    } );
+  |    
+  script(type='text/javascript').
+    $(document).ready(function() {
+      $('#announcementList').DataTable(
+      {
+      "dom": '<"dt-buttons"Bf><"clear">lirtp',
+      "paging": false,
+      "autoWidth": true,
+      "buttons": [
+      'colvis',
+      'csvHtml5',
+      'pdfHtml5',
+      'print'
+      ]
+      }
+      );
+    });

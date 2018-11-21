@@ -1,0 +1,66 @@
+extends layout 
+
+block content 
+
+  .col-lg-12
+    .animated.fadeIn
+      .card
+        .card-header
+          strong#new-admin-page Register a new admin
+        |  
+        a#back-btn.btn.btn-info(href='/admins') Back to Admins List
+
+        .card-body.card-block
+          form.form-horizontal(action='', method='post', enctype='application/x-www-form-urlencoded')
+                             
+            .row.form-group
+              .col.col-md-2
+                label.form-control-label(for='name') Name
+              |                                 
+              .col.col-md-4
+                input#name.form-control(type='text', name='name', placeholder='Enter name')
+            |      
+
+            .row.form-group
+              .col.col-md-2
+                label.form-control-label(for='email') Email
+              |                                 
+              .col.col-md-4
+                input#email.form-control(type='email', name='email', placeholder='Enter email')
+              
+            ul(style='padding:20px')
+              for error in feedbacks.errors 
+                li.text-danger=error.msg
+              for message in feedbacks.messages
+                li.text-success=message
+
+            .card-footer
+              button#submit.btn.btn-success.btn-sm(type='submit')
+                i.fa.fa-check
+                |  Submit
+              button#cancel.btn.btn-danger.btn-sm(type='reset')
+                i.fa.fa-times
+                |  Cancel                   
+                                                 
+  //
+    Task-id: C0
+    Task description:
+    CALENDAR, add form fields for creating an event
+    TODO:
+    Add input fields for making an event
+    they should ideally be hidden at first sight,
+    and can be expanded when some "make event" option is chosen
+           
+  // .animated
+  // .content
+  // /#right-panel
+  // Right Panel
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')
+
+
+
+
+        

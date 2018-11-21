@@ -1,0 +1,5 @@
+#optional-filter-form {
+	width: 100%;
+	transition-property: height; 
+	transition-duration: 1s; 
+}

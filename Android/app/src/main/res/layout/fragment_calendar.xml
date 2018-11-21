@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="uk.ac.kcl.spiderbyte.view.CalendarFragment"
+    android:visibility="visible">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.applandeo.materialcalendarview.CalendarView
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:baselineAligned="false"
+                android:clickable="false"
+                android:fadingEdge="none"
+                android:showDividers="none"
+                android:visibility="visible"
+                app:abbreviationsLabelsColor="@color/colorAccent"
+                app:forwardButtonSrc="@drawable/ic_keyboard_arrow_right_black_24dp"
+                app:headerColor="#ffffff"
+                app:headerLabelColor="#000000"
+                app:layout_constraintBottom_toTopOf="@+id/calendar_announcement"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:previousButtonSrc="@drawable/ic_keyboard_arrow_left_black_24dp"
+                app:selectionColor="@color/colorAccent"
+                app:todayLabelColor="@color/colorAccent">
+
+            </com.applandeo.materialcalendarview.CalendarView>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/eventList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="5dp"
+                android:scrollbars="vertical"
+                android:visibility="visible"
+                tools:listitem="@layout/list_events" />
+
+            <ImageView
+                android:id="@+id/ic_frown_events"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:src="@drawable/ic_frown"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@+id/no_events_available"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/eventList"
+                app:layout_constraintVertical_bias="1.0" />
+
+            <TextView
+                android:id="@+id/no_events_available"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/no_events"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                android:visibility="gone"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.532" />
+    </LinearLayout>
+
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
+
+
+
+

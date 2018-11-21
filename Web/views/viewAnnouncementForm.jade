@@ -1,0 +1,50 @@
+doctype html
+html
+  head
+    link(rel='stylesheet', type='text/css', media='screen', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css')
+    link(rel='stylesheet', type='text/css', media='screen', href='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-markdown/2.10.0/css/bootstrap-markdown.min.css')
+    script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js')
+    script(src='/assets/js/bootstrap-markdown.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.5/marked.min.js')
+  body
+    .col-lg-12
+      .animated.fadeIn
+        .card
+          .card-header
+            strong=announcement.title
+          .card-body.card-block.frame
+            .row
+              // Post Content Column
+              .col-lg-8
+                // Title
+                h1.mt-4 
+                  //div=announcement.title
+                  // Author
+                p.lead
+                  div(style='display:inline-block;')
+                    div=announcement.author
+                  hr
+                  div=announcement.dateTime
+                  hr
+                  .row(style='margin-left: 1px; margin-bottom: 10px;')
+                    div=announcement.readingList
+                    br                
+                  // Post Content
+                  textarea#content( data-provide='markdown')=announcement.content
+              .col-12.col-md-6
+                a#openpdf(href='#', onclick="window.open('../pdf.pdf', '_blank'); return false;") Open PDF Attachment
+                #hidden(style='display:none;')
+                  div=announcement.pdf
+    script.
+      if(document.getElementById('hidden').innerHTML === '<div></div>'){
+
+          document.getElementById('openpdf').style.display = 'none';
+        }
+
+      $('#content').markdown({
+        onShow: function(e) {
+          e.hideButtons('all');  
+          e.showPreview(); 
+        }
+      }); 

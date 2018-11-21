@@ -1,0 +1,30 @@
+.loader-wrapper {
+	background-color: #272C33; 
+	display: block; 
+	/*background-color: #98FFBA; mint green option */ 
+	height: 100%; 
+	left: 0;
+	padding: 10em; 
+	position: absolute;
+	transition-property: top; 
+	transition-duration: 0.5s; 
+	top: 0;
+	width: 100%;
+	z-index: 1000; 
+}
+
+.hidden {
+	display: none; 
+}
+
+#spider {
+
+	display: block; 
+	top: 30%;
+	left: 50%;
+	margin-left:-100px;
+	max-width: 200px;
+	
+	position: absolute; 
+  
+}

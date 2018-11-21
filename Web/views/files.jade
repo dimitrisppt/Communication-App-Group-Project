@@ -1,0 +1,31 @@
+extends layout
+
+block content
+    
+    div.container
+        h1= title
+
+        form#myForm(class='form-horizontal', action = '', method='post')
+          input(type='text', id='title', class='form-control', placeholder='Title of the announcement', name='title', value=requestTitle)
+          input#content(type='hidden', name='content', value='')
+          input#file(type='file')
+          button#button(class='btn btn-info') Send file
+          script.
+            document.getElementById('button').addEventListener('click', function() {
+            var files = document.getElementById('file').files;
+            if (files.length > 0) {
+            getBase64(files[0]);
+            }
+            });
+            function getBase64(file) {
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+            console.log(reader.result);
+            document.getElementById('content').value = reader.result;
+            document.getElementById("myForm").submit();
+            };
+            reader.onerror = function (error) {
+            console.log('Error: ', error);
+            };
+            }

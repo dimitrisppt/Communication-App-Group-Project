@@ -1,0 +1,7 @@
+#avatar : hover {
+	cursor: pointer;
+}
+
+#avatar {
+	display: block; 
+}

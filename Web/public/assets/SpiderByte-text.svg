@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 326.23 78.26">
+	<defs>
+
+		<style>
+			@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+			.cls-1{
+				text-align: center; 
+				font-size:1em;
+				fill:#fff;
+				font-family: 'Open Sans', sans-serif;
+				letter-spacing: 0; 
+
+				-webkit-animation: dash 1.5s linear forwards;
+				-o-animation: dash 1.5s linear forwards;
+				-moz-animation: dash 1.5s linear forwards;
+				animation: dash 1.5s linear forwards;
+
+			}
+
+			@-webkit-keyframes dash {
+				from {
+					stroke-dasharray: 0, 1000;
+				}
+
+				to {
+					stroke-dasharray: 1000;
+				}
+			}
+		
+		</style>
+
+	</defs>
+
+	<title>SpiderByte-text</title>
+	<g id="Layer_1" data-name="Layer 1">
+
+		<text class="cls-1" transform="translate(0 60.26)">SpiderByte
+		</text>
+
+	</g>
+</svg>

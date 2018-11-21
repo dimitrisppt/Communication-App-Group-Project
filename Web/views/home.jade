@@ -1,0 +1,130 @@
+extends layout 
+
+block content 
+  .breadcrumbs
+    .col-sm-4
+      .page-header.float-left
+        .page-title
+          h1 Dashboard
+  .content.mt-3
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-layout-grid2.text-warning.border-warning
+            .stat-content.dib
+              .stat-text Amount of Announcements
+              if (stats.announcementCount)
+                .stat-digit=stats.announcementCount
+              else 
+                .stat-digit 0 
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-user.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Amount of Admins
+              if (stats.adminCount)
+                .stat-digit=stats.adminCount
+              else 
+                .stat-digit 0 
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-apple.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Amount of IOS Users
+              if (stats.iosCount)
+                .stat-digit=stats.iosCount
+              else 
+                .stat-digit 0 
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-android.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Amount of Android Users
+              if (stats.androidCount)
+                .stat-digit=stats.androidCount
+              else 
+                .stat-digit 0 
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-bar-chart.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Amount of Events
+              if (stats.eventCount)
+                .stat-digit=stats.eventCount
+              else 
+                .stat.digit 0 
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      if (stats.oldestAnnouncement)
+        a(href='/listAnnouncements/detail/' + stats.latestAnnouncement.key)
+          .card
+            .card-body
+              .stat-widget-one
+                .stat-icon.dib
+                  i.ti-announcement.text-primary.border-primary
+                .stat-content.dib
+                  .stat-text Latest Announcement
+                  .stat-digit=stats.latestAnnouncement.title
+            .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      if (stats.oldestAnnouncement)
+        a(href='/listAnnouncements/detail/' + stats.oldestAnnouncement.key)
+          .card
+            .card-body
+              .stat-widget-one
+                .stat-icon.dib
+                  i.ti-announcement.text-primary.border-primary
+                .stat-content.dib
+                  .stat-text Oldest Announcement
+                  
+                    .stat-digit=stats.oldestAnnouncement.title
+            .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-clipboard.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Latest Event
+              if (stats.latestEvent)
+                .stat-digit=stats.latestEvent.title
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    .col-xl-3.col-lg-6
+      .card
+        .card-body
+          .stat-widget-one
+            .stat-icon.dib
+              i.ti-clipboard.text-primary.border-primary
+            .stat-content.dib
+              .stat-text Oldest Event
+              if (stats.oldestEvent)
+                .stat-digit=stats.oldestEvent.title
+        .chart-wrapper.px-0(style='height:50px;', height='50')
+    
+  // .content
+  // /#right-panel
+
+
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')

@@ -1,0 +1,31 @@
+extends layout 
+
+block content 
+
+  .col-lg-12
+    .animated.fadeIn
+      .card
+        if(formUrl)
+          .card-header
+            strong Edit announcement
+
+          .card-body.card-block
+            iframe#form-frame(src=formUrl, width='100%' frameborder='0', scrolling='no',template, onload='this.lastValue="all";resizeIframe(this)', style='transition-property:height; transition-duration: 0.6s;')
+        else 
+          .card-header
+            strong New Template
+
+          .card-body.card-block
+             iframe#form-frame(src='/templates/templateForm' width='100%' frameborder='0', scrolling='no', onload='this.lastValue="all";resizeIframe(this)', style='transition-property:height; transition-duration: 0.6s;')
+            
+  // .animated
+  // .content
+  // /#right-panel
+  // Right Panel
+
+  script(src='https://code.jquery.com/jquery-1.12.4.min.js')
+  script(src='/assets/js/vendor/jquery-2.1.4.min.js')
+  script(src='/assets/js/popper.min.js')
+  script(src='/assets/js/plugins.js')
+  script(src='/assets/js/main.js')      
+  script(src='/assets/js/iframe.js')

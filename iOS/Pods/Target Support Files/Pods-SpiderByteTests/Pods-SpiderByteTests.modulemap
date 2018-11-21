@@ -1,0 +1,6 @@
+framework module Pods_SpiderByteTests {
+  umbrella header "Pods-SpiderByteTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
